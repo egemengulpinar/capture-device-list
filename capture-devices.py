@@ -32,7 +32,7 @@ if res == []:
 
 if args.list != None:
     print(res)
-elif args.list !=None:
+elif args.save !=None:
     ###write the results to a file.
     with open('devices.txt',"w", encoding="utf-8") as output:
         output.write("Device List" + "\n")
