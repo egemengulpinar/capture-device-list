@@ -9,7 +9,8 @@ def load_utils():
     f.write(data)  
   with zipfile.ZipFile('ffmpeg.zip', 'r') as zip:
     zip.extractall()
-os.remove('ffmpeg.zip')
+if os.path.exists('ffmpeg.zip'):
+  os.remove('ffmpeg.zip')
 
 
   
