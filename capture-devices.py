@@ -1,3 +1,11 @@
+########################################
+##                                    ##
+##      Author : Egemen Gulpinar      ##
+##  Mail : egemengulpinar@gmail.com   ##
+##     github.com/egemengulpinar      ##
+##                                    ##
+########################################
+
 import subprocess
 import json
 import re
@@ -6,10 +14,11 @@ import argparse
 from utils import load_utils
 import argparse
 
-
 parser = argparse.ArgumentParser()
-parser.add_argument('-list', '-l', type=str, help='Print the list of devices.')
-parser.add_argument('-save', '-s', type=str, help='Save the results to a file.')
+parser.add_argument('-list', '-l', nargs='?' ,type=str, help='Print the list of devices.')
+parser.add_argument('-save', '-s', nargs='?', type=str, help='Save the results to a file.')
+parser.add_argument('-audio', '-a', nargs='?', type=str, help='Select only aud.io devices.')
+parser.add_argument('-video', '-v', nargs='?', ype=str, help='Select only video devices.')
 args = parser.parse_args()
 
 
@@ -22,7 +31,10 @@ proc = subprocess.Popen([f'{ffmpeg_path}', '-stats', '-hide_banner','-list_devic
 stdout, stderr = proc.communicate()
 json_object = json.dumps(stderr.decode("UTF-8"))
 json_object = json.loads(json_object)
-only_video_json_object = str([x for x in json_object.split("\n") if x.__contains__("(audio, video)")])
+if args.audio != None or args.video != None:
+    only_video_json_object = str([x for x in json_object.split("\n") if x.__contains__(f"({args.audio}, {args.video})")])    
+else:
+    only_video_json_object = str([x for x in json_object.split("\n") if x.__contains__("(audio, video)")])
 re_json_object = re.findall(r'"([^"]*)"', only_video_json_object)
 res = [x for x in re_json_object if not x.__contains__("@device")]
 if res == []:
