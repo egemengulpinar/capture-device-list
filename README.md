@@ -78,7 +78,20 @@ print(result)
 devices.run_with_param(alt_name=True,list_all=True)
 ```
 
-    
+## Capturing Video Device Example with FFmpeg
+
+```
+cmd = [f'{FFMPEG_PATH}', '-loglevel', 'quiet',
+        '-f', 'dshow',
+        '-thread_queue_size', f'{thread_queue_size}',
+        '-rtbufsize', '2147480000',
+        '-i', 'video={NAME OF ANY CAPTURE DEVICE}', #alternative names allowed too.
+        '-preset' ,'ultrafast', 
+        '-f', 'rawvideo',
+        '-threads' , '1',
+        '-pix_fmt','bgr24',
+        '-']
+```
 ## License
 
 [MIT](https://github.com/egemengulpinar/capture-device-list/blob/main/LICENSE)
