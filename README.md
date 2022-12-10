@@ -78,7 +78,7 @@ print(result)
 devices.run_with_param(alt_name=True,list_all=True)
 ```
 
-## Capturing Video Device Example with FFmpeg
+## Capturing Video Device with FFmpeg  Example
 
 ```bash
 cmd = [f'{FFMPEG_PATH}', '-loglevel', 'quiet',
