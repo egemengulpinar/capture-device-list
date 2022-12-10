@@ -80,7 +80,7 @@ devices.run_with_param(alt_name=True,list_all=True)
 
 ## Capturing Video Device Example with FFmpeg
 
-```
+```bash
 cmd = [f'{FFMPEG_PATH}', '-loglevel', 'quiet',
         '-f', 'dshow',
         '-thread_queue_size', f'{thread_queue_size}',
