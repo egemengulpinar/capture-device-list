@@ -1,7 +1,7 @@
 
 # capture-device-list
 [![Build status](https://img.shields.io/travis/Pythonity/icon-font-to-png.svg)][egemen]
-[![Latest PyPI version](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.org/project/capture-devices/)
+[![3.5](https://img.shields.io/pypi/v/django-icons.svg)](https://pypi.org/project/capture-devices/)
 
 
 Simplest way to connect DirectShow Windows API with FFmpeg and list all capture devices with alternative names. The user can save the results to a file or print either “video”, “audio”, or both “audio, video” devices.
